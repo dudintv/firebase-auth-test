@@ -11,6 +11,7 @@ const links = [
   { name: "Feed", path: "/feed" },
   { name: "Register", path: "/register" },
   { name: "Login", path: "/login" },
+  { name: "Login by phone", path: "/login-by-phone" },
 ];
 
 async function handleSignOut() {

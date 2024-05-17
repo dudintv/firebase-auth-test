@@ -5,11 +5,13 @@ import HomePage from "@/views/HomePage.vue";
 import FeedPage from "@/views/FeedPage.vue";
 import RegisterPage from "@/views/RegisterPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
+import LoginByPhonePage from "@/views/LoginByPhonePage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
   { path: "/register", component: RegisterPage },
   { path: "/login", component: LoginPage },
+  { path: "/login-by-phone", component: LoginByPhonePage },
   { path: "/feed", component: FeedPage, meta: { requiresAuth: true } },
 ];
 
