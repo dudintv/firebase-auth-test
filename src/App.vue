@@ -10,8 +10,10 @@ const links = [
   { name: "Home", path: "/" },
   { name: "Feed", path: "/feed" },
   { name: "Register", path: "/register" },
+  { name: "Register TOTP", path: "/register-totp" },
   { name: "Login", path: "/login" },
   { name: "Login by phone", path: "/login-by-phone" },
+  { name: "Login by TOTP", path: "/login-by-totp" },
 ];
 
 async function handleSignOut() {
@@ -38,7 +40,9 @@ onMounted(() => {
     </router-link>
     <button v-if="isLoggedIn" @click="handleSignOut">Sign out</button>
   </nav>
-  <RouterView />
+  <div class="p-4">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped></style>

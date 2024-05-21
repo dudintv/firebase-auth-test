@@ -1,12 +1,6 @@
 <script setup lang="ts">
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  RecaptchaVerifier,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "@firebase/auth";
-import { ref, onMounted } from "vue";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -21,8 +15,8 @@ async function login() {
   try {
     console.log("login", email.value, password.value);
 
-    const loginData = await signInWithEmailAndPassword(auth, email.value, password.value);
-    console.log("loginData =", loginData);
+    const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value);
+    console.log("userCredential =", userCredential);
 
     router.push("/feed");
   } catch (error: any) {
@@ -46,7 +40,9 @@ async function signInWithGoogle() {
 <template>
   <h1>LOGIN</h1>
   <p><input type="text" name="email" id="email" v-model="email" class="input" /></p>
-  <p><input type="password" name="password" id="password" v-model="password" class="input" /></p>
+  <p>
+    <input type="password" name="password" id="password" v-model="password" class="input" @keypress.enter="login" />
+  </p>
   <p v-if="errorMessage">{{ errorMessage }}</p>
   <p><button class="button" id="sign-in-button" @click="login">Login by email</button></p>
   <p><button class="button" @click="signInWithGoogle">Sign in with Google</button></p>
